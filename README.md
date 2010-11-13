@@ -54,5 +54,16 @@ mootools use document.id() as slick finder.
 
 * [mootools code](https://github.com/mootools/mootools-core/blob/master/Source/Element/Element.js#L237)
 * [jsdom code](https://github.com/tmpvar/jsdom/blob/master/lib/jsdom/level2/core.js#L379)
+* [commit](https://github.com/oelmekki/jsdom_mootools_adventures/commit/7e4456388cea9f1362161986d629ac04f90824fe)
 
+
+Slick
+-----
+
+Slick is intended to work with node.js as an independent module. That quite 
+screws everything when put in a classical mootools build loaded in node, since
+it is put in the exports object and the rest of mootools expects it to be in
+the local scope.
+
+* [mootools code](https://github.com/mootools/mootools-core/blob/master/Source/Slick/Slick.Parser.js#L221)
 

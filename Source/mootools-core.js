@@ -1696,6 +1696,10 @@ if (!this.Slick) this.Slick = Slick;
 
 }).apply(/*<CommonJS>*/(typeof exports != 'undefined') ? exports : /*</CommonJS>*/this);
 
+if (typeof exports != 'undefined'){
+	var Slick = exports.Slick;
+}
+
 
 /*
 ---
