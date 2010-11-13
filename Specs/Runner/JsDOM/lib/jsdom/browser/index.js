@@ -402,6 +402,9 @@ var parseDocType = function(doc, html) {
     return this.getElementsByTagName("head").item(0);
   });
 
+  dom.Document.prototype.__defineSetter__("head", function() {
+  });
+
   // Author: Swizec
   // styleSheets is an interface to all of the css on a page
   // some scripts like readability.js expect this to exist
