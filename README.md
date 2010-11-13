@@ -34,6 +34,13 @@ we can safely declare an noop setter.
 
 * [mootools code](https://github.com/mootools/mootools-core/blob/master/Source/Browser/Browser.js#L162)
 * [jsdom code](https://github.com/tmpvar/jsdom/blob/master/lib/jsdom/browser/index.js#L401)
+* [commit](https://github.com/oelmekki/jsdom_mootools_adventures/commit/70178dfb81881f276adef53b6964f06e091a0237)
+
+
+Request
+-------
+
+Mootools needs an implementation of xmlhttprequest
 
 
 

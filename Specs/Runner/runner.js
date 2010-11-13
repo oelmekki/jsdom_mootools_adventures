@@ -12,6 +12,7 @@ for (var k in window){
 }
 
 global.window = global;
+global.XMLHttpRequest = require('./XMLHttpRequest/XMLHttpRequest').XMLHttpRequest;
 
 var options = require('./Helpers/RunnerOptions').parseOptions(process.argv[2]);
 if (!options) return;

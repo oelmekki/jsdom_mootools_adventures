@@ -1,0 +1,3 @@
+[submodule "Specs/Runner/XMLHttpRequest"]
+	path = Specs/Runner/XMLHttpRequest
+	url = https://github.com/driverdan/node-XMLHttpRequest.git
