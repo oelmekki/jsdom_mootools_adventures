@@ -12,11 +12,17 @@ Request dependency
 ------------------
 
 Jsdom introduce an unnecessary dependency, "request".
-[see the issue](https://github.com/tmpvar/jsdom/issues/closed#issue/78)
-[commit](https://github.com/oelmekki/jsdom_mootools_adventures/commit/769cb3d68737daba0ff0bab08e860fa0b5f3d8d0)
+
+* [see the issue](https://github.com/tmpvar/jsdom/issues/closed#issue/78)
+* [commit](https://github.com/oelmekki/jsdom_mootools_adventures/commit/769cb3d68737daba0ff0bab08e860fa0b5f3d8d0)
 
 
 Document
 --------
 
 Document and other window properties are not included in the global scope.
+
+* [commit](https://github.com/oelmekki/jsdom_mootools_adventures/commit/872e31ce906de6ad033fd7cb00c17d9cf992be5f)
+
+
+
