@@ -3,6 +3,8 @@
 
 var puts = require('sys').puts;
 
+jsdom = require("./JsDOM/lib/jsdom").jsdom;
+window = jsdom('<html><head></head><body><div id="pouet">mock</div></body></html>').createWindow();
 
 var options = require('./Helpers/RunnerOptions').parseOptions(process.argv[2]);
 if (!options) return;

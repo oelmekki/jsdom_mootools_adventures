@@ -1,6 +1,5 @@
 var core      = require("./core").dom.level2.core,
     urlParse  = require("url").parse,
-    request   = require("request");
     readFile  = require("fs").readFile,
     http          = require('http');
 
