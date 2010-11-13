@@ -3,8 +3,9 @@
 
 var puts = require('sys').puts;
 
-jsdom = require("./JsDOM/lib/jsdom").jsdom;
-window = jsdom('<html><head></head><body><div id="foo">mock</div></body></html>').createWindow();
+var jsdom = require("./JsDOM/lib/jsdom");
+window = jsdom.jsdom('<html><head></head><body><div id="foo">mock</div></body></html>').createWindow();
+jsdom.mootoolify(window);
 
 
 for (var k in window){
