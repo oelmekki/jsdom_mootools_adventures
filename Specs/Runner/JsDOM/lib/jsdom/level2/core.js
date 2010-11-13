@@ -377,19 +377,31 @@ core.Document.prototype.createAttributeNS = function(/* string */ namespaceURI,
 };
 
 core.Element.prototype.__defineSetter__("id", function(id) {
-  this.setAttribute("id", id);
-  id = this.getAttribute("id"); //Passed validation
-  if (!this._ownerDocument._ids) {
-      this._ownerDocument._ids = {};
-  }
-  if (id === '') {
-      delete this._ownerDocument._ids[id];
-  } else {
-      this._ownerDocument._ids[id] = this;
-  }
+	if (typeof id == 'function'){
+		this._id = id;
+	}
+
+	else {
+		this.setAttribute("id", id);
+		id = this.getAttribute("id"); //Passed validation
+		if (!this._ownerDocument._ids) {
+				this._ownerDocument._ids = {};
+		}
+
+		if (id === '') {
+				delete this._ownerDocument._ids[id];
+		} else {
+				this._ownerDocument._ids[id] = this;
+		}
+	}
+
 });
 
 core.Element.prototype.__defineGetter__("id",function() {
+	if (this._id){
+		return this._id;
+	}
+
   return this.getAttribute("id");
 });
 

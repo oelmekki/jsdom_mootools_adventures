@@ -42,5 +42,17 @@ Request
 
 Mootools needs an implementation of xmlhttprequest
 
+* [commit](https://github.com/oelmekki/jsdom_mootools_adventures/commit/5dabb77fa084d8f76181246cf43a7580346a830e)
+
+
+Document.id
+-----------
+
+Jsdom defines an "id" getter/setter for core.Element, from which Document 
+inherit. It is intended to handle the "id" attribute of the element, whereas
+mootools use document.id() as slick finder.
+
+* [mootools code](https://github.com/mootools/mootools-core/blob/master/Source/Element/Element.js#L237)
+* [jsdom code](https://github.com/tmpvar/jsdom/blob/master/lib/jsdom/level2/core.js#L379)
 
 
