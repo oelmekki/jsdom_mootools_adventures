@@ -1,5 +1,33 @@
 /*
 ---
+
+name: Prefix
+
+description: Loads MooTools as a CommonJS Module.
+
+license: MIT-style license.
+
+copyright: Copyright (c) 2010 [Christoph Pojer](http://cpojer.net/).
+
+authors: Christoph Pojer
+
+provides: [Prefix]
+
+...
+*/
+
+var GLOBAL_ITEMS = function(){
+	var items = [];
+	
+	for (var key in this)
+		items.push(key);
+	
+	return items;
+}();
+
+
+/*
+---
 MooTools: the javascript framework
 
 web build:
@@ -1061,7 +1089,6 @@ Document.mirror(function(name, method){
 });
 
 document.html = document.documentElement;
-//console.log( document );
 document.head = document.getElementsByTagName('head')[0];
 
 if (document.execCommand) try {
@@ -2629,7 +2656,7 @@ provides: [Element, Elements, $, $$, Iframe, Selectors]
 ...
 */
 
-var Element = function(tag, props){
+var Element = this.Element = function(tag, props){
 	var konstructor = Element.Constructors[tag];
 	if (konstructor) return konstructor(props);
 	if (typeof tag != 'string') return document.id(tag).set(props);
@@ -5370,3 +5397,34 @@ Swiff.remote = function(obj, fn){
 
 })();
 
+/*
+---
+
+name: Loader
+
+description: Loads MooTools as a CommonJS Module.
+
+license: MIT-style license.
+
+copyright: Copyright (c) 2010 [Christoph Pojer](http://cpojer.net/).
+
+authors: Christoph Pojer
+
+requires: [Core/Core, Core/Object]
+
+provides: [Loader]
+
+...
+*/
+
+if (typeof exports != 'undefined') (function(){
+
+for (var key in this) if (!GLOBAL_ITEMS.contains(key)){
+	exports[key] = this[key];
+}
+
+exports.apply = function(object){
+	Object.append(object, exports);
+};
+
+})();

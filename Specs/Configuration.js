@@ -51,7 +51,6 @@ Configuration.source = {
 	'sources': {
 		path: '../Source/',
 		files: [
-			'mootools-core',
 			'TestObject'
 		]
 	}

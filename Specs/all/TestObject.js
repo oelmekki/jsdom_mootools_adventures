@@ -23,12 +23,12 @@ describe('TestObject', {
 
 
 	'should manipulate DOM': function(){
-		var container = $('foo');
+		var container = new Element( 'div' );
 		var firstEl		= new Element('div', {id: 'first'});
 		var secondEl  = new Element('div', {id: 'second'});
 		firstEl.inject(container);
 		secondEl.inject(firstEl, 'after');
 
-		expect(container.get('html')).toBe('<div id=first"></div><div id="second"></div>');
+		expect(container.get('html')).toBe('<div id="first"></div><div id="second"></div>');
 	}
 });
