@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+script=`readlink -f $0`
+base=`dirname $script`/../
+
+if [ ! -f $base/Source/Configuration.js ]; then
+  cp $base/Source/Configuration.template.js $base/Source/Configuration.js
+fi
+
+cd $base/..
+cd $base/Specs/Runner
+./runner.js '{ "reporter" : "junit" }'

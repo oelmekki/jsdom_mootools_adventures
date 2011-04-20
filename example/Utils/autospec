@@ -1,0 +1,69 @@
+#!/usr/bin/env ruby
+require 'pathname'
+require 'find'
+
+RUNNER_DIR = File.expand_path( File.join( File.dirname(__FILE__ ), '..', 'Specs', 'Runner' ))
+SOURCE_DIR = File.expand_path( File.join( File.dirname(__FILE__ ), '..', 'Source' ))
+SPECS_DIR = File.expand_path( File.join( File.dirname(__FILE__ ), '..', 'Specs' ))
+
+class AutoSpec
+	attr_accessor :interrupted, :wants_to_quit
+
+	def initialize( *dirs_to_check )
+		@dirs_to_check = dirs_to_check
+		Dir.chdir RUNNER_DIR 
+		self.interrupted = false
+		self.wants_to_quit = false
+	end
+
+
+	def run
+		add_sigint_handler
+		loop do
+			begin
+				run_specs
+				self.interrupted = false
+				self.wants_to_quit = false
+				sleep 1 until find_files_to_test
+			rescue Interrupt
+				break if self.wants_to_quit
+			end
+		end
+	end
+
+
+	def update_mtime
+		@mtime = Time.now
+	end
+
+
+	def find_files_to_test
+		Find.find( *@dirs_to_check ) do |file|
+			return true if ( file !~ /[^|\/]\./ and File.stat( file ).mtime > @mtime )
+		end
+	end
+
+
+	def run_specs
+		puts "\n" * 100
+		puts "launching specs"
+		puts `./runner.js`
+		update_mtime
+	end
+
+
+  def add_sigint_handler
+    trap 'INT' do
+      if self.interrupted then
+        self.wants_to_quit = true
+      else
+				puts "Interrupt a second time to quit"
+				self.interrupted = true
+				Kernel.sleep 2
+        raise Interrupt, nil # let the run loop catch it
+      end
+    end
+  end
+end
+
+AutoSpec.new( SOURCE_DIR, SPECS_DIR + '/unit', SPECS_DIR + '/functional' ).run

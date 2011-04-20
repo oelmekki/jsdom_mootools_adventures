@@ -1,0 +1,24 @@
+<!-- DOCTYPE html-->
+<html>
+  <head>
+    <title>whatever</title>
+  </head>
+
+  <body>
+    <div id="content">
+      <p>A very useful text</p>
+    </div>
+
+    <script src="mootools-core.js"></script>
+    <script src="mootools-more.js"></script>
+    <script src="Libs/Timeout.js"></script>
+    <script src="Source/ExampleView.js"></script>
+    <script src="Source/ExampleController.js"></script>
+    <script>
+      window.addEvent( 'domready', function(){
+        window.controller = new ExampleController( document.id( 'content' ) );
+        window.controller.run();
+      });
+    </script>
+  </body>
+</html>
